@@ -1,0 +1,25 @@
+.home{
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-primary;
+}
+
+.auth{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+
+    &__left-section{
+        width: 50%;
+        background-color: $color-primary;
+
+    }
+
+    &__right-section{
+        text-align: center;
+        margin-top: 10rem;
+        width: 50%;
+    }
+}

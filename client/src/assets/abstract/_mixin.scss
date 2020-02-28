@@ -1,0 +1,7 @@
+@mixin removeDefaultButtonStyle{
+    background-color:transparent;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    position: relative;
+}

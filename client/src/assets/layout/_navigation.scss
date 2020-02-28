@@ -1,0 +1,47 @@
+.navigation{
+    height: 20%;
+    position: fixed;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    z-index: 20;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: black;
+    padding: 2rem;
+
+    &__list{
+        flex: 70% 1 1;
+        display: flex;
+        font-size: 2rem;
+        justify-content: space-evenly;
+    }
+
+    &__item{
+        list-style: none;
+        cursor: pointer;
+    }
+
+    &__link{
+
+        text-decoration: none;
+        &:link,
+        &:visited{
+            color: black;
+
+
+        }
+
+        &:active,
+        &:hover{
+            color: white;
+        }
+    }
+
+}
+
+.logo-box{
+    flex: 30% 1 1;
+}
+

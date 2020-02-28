@@ -1,0 +1,129 @@
+.slide__container {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    align-items: center;
+  }
+    
+  .slide__container__list {
+    display: flex;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    
+  }
+  
+  .slide__container__list__item {
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+      
+  }
+  .not-hover{
+    max-width: 0%;
+  }
+
+  .slide{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    color: yellow;
+    text-align: center;
+    overflow: hidden;
+
+    &__filter{
+        background-color: rgba($color-primary, .4);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+
+    }
+
+    &__image{
+        width: 100%;
+        background-blend-mode: multiply;
+        background-color: $color-primary;
+        background-size: contain;
+        height: 100vh;
+    }
+  }
+
+  .navigation-arrow{
+    z-index: 20;
+    position: absolute;
+    font-size: 4rem;
+    fill: white;
+  }
+
+  .left{
+    left: 0;
+  }
+
+  .right{
+    right: 0;
+  }
+  
+  @media only screen and (max-width: 600px){
+    .slide__container {
+      width: 100vw;
+      margin: 0;
+    }
+  
+    .slide__container__list {   
+      width: 100%;   
+    }
+    
+  }
+
+  
+  .slide-button{
+    color: black;
+    padding: 10px;
+    position: relative;
+    top: 30px;
+    margin: 5%;
+    padding: 10px 30px;
+    text-decoration: none;
+    border: 1px solid black;
+      background-color: yellow;
+    font-weight: bolder;
+      cursor: pointer;
+      
+  }
+   
+  
+  @media only screen and (max-width: 600px) {
+    .slide_container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+    
+    }
+    .left_slide_container{
+      width: 0;
+      height: 0;
+      opacity: 0;
+      z-index: -1;
+    
+    }
+    .right_slide_container{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .nextArrow{
+      display: none;
+    }
+    
+  }
