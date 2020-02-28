@@ -6,6 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const userRouter = require("./routes/auth");
 const errorHandler = require("./controllers/error")
+
 const PORT = process.env.PORT || 6000 ;
 //middleware
 app.use(bodyParser.json());
@@ -16,6 +17,19 @@ app.use(cors());
 app.use("/auth", userRouter)
 
 app.use(errorHandler)
+
+app.use(express.static(path.join(__dirname,'/client/build')))
+app.use(function(req, res, next){
+    let error = new Error("Not Found")
+    error.status = 404;
+    next(error)
+})
+
+//static file for Production stage
+
+app.get("/*", (req, res)=>{
+    res.sendFile(path.join(__dirname, '/client/build/index.html'))
+})
 
 app.listen(PORT, (req, res) =>{
     mongoConnect.on('error', console.error.bind(console, 'MongoDB connection error:'));
