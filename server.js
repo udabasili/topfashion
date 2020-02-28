@@ -19,11 +19,7 @@ app.use("/auth", userRouter)
 app.use(errorHandler)
 
 app.use(express.static(path.join(__dirname,'/client/build')))
-app.use(function(req, res, next){
-    let error = new Error("Not Found")
-    error.status = 404;
-    next(error)
-})
+
 
 //static file for Production stage
 
