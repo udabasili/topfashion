@@ -9,13 +9,14 @@ const setCurrentUser = (user) =>({
     payload:user
 })
 
-export const setTokenHeader = (token) =>{    
+export function setTokenHeader(token){    
     TokenHeader(token)
 }
 
 export function logOut (){
     return dispatch =>{
         localStorage.clear()
+        TokenHeader(false)
         dispatch(setCurrentUser({}))
         dispatch(getUserCartItems([]))
     }
@@ -28,11 +29,11 @@ export const AuthFunction = (auth, user) =>{
         return new Promise((resolve, reject) =>{
             return restApi("post", `/auth/${auth.toLowerCase()}`,user)
                 .then((response) =>{
+                    setTokenHeader(response.token)                          
                     dispatch(removeError())
                     dispatch(setCurrentUser(response.user))
                     localStorage.setItem("userId", response.user._id);
                     localStorage.setItem("validator", response.token)
-                    setTokenHeader(response.token)                          
                     dispatch(getUserCartItems(response.user.cartItems))              
                     return resolve(response.user.username)
 
@@ -51,12 +52,12 @@ export function verifyUser () {
     return dispatch =>{
         return new Promise((resolve, reject)=>{    
             return restApi("get", "/authenticate-user")
-            .then((response) =>{                                            
+            .then((response) =>{      
+                setTokenHeader(response.token)                                                          
                 dispatch(removeError())
                 dispatch(setCurrentUser(response.user))
                 localStorage.setItem("userId", response.user._id);
                 localStorage.setItem("validator", response.token)
-                setTokenHeader(response.token)                    
                 return resolve(response.user.username)
             })
             .catch((error)=>{                

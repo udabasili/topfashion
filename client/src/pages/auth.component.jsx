@@ -121,14 +121,13 @@ class Auth extends Component {
         case "register":
           this.props.AuthFunction(this.state.auth, userData)
             .then((response) =>{
-              console.log("here");
-              
               this.props.history.push("/")
                 })
           break;
         case "login":
           this.props.AuthFunction(this.state.auth, this.state.loginData).then(()=>{
-            this.props.history.push("/")
+            this.props.history.goBack()
+
           })
             
           break;

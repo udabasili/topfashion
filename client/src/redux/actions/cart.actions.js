@@ -38,7 +38,7 @@ export const addItemToCart = (addedCartItem) => {
   return dispatch => {
     return new Promise((resolve, reject) =>{
       return restApi("post", `/user/${userId}/cart/add`,addedCartItem)
-      .then((response) => {
+      .then((response) => {        
         dispatch(removeError())
         dispatch(getUserCartItems(response))
         return resolve()

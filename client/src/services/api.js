@@ -1,9 +1,11 @@
 import axios from "axios";
 
 export function TokenHeader (token) {    
+    console.log(token);
+    
     if(token){
+        axios.defaults.headers.get["Accept"] = "application/json";
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        console.log(axios.defaults.headers);
         
     }
     else{

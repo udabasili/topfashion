@@ -17,6 +17,8 @@ exports.postCart = async function (req, res, next){
         })
         
     } catch (error) {
+        console.log(error);
+        
         return next({
             status:500,
             message:error
