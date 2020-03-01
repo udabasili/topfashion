@@ -17,13 +17,14 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors());
 
 
+app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname,'/client/build')))
 
 
 //routers
 app.use("/auth", userRouter)
 app.get("/authenticate-user", checkAuth.verifyUser)
-app.use(checkAuth.protectedRoute);
+// app.use(checkAuth.protectedRoute);
 app.use("/user/:userId/", checkAuth.confirmUser, shopRoutes);
 app.use(errorHandler)
 

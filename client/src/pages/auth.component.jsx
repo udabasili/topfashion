@@ -42,7 +42,7 @@ class Auth extends Component {
 
     }
 
-    componentWillMount(){
+    componentWillUnmount(){
       this.props.removeError()
     }
 
