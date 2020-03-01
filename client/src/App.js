@@ -13,11 +13,7 @@ import PrivateRoute from './components/protected-route.component';
 class App extends React.Component {
 
   componentDidMount() {    
-    this.props.verifyUser().then(async()=>{   
-
-      })
-      .catch(() =>{
-    })  
+    
   }
 
   
