@@ -115,3 +115,28 @@
     transform: scale(1.07);
   }
 }
+
+.styled-button {
+  letter-spacing: 0.5px;
+  line-height: 4rem;
+  padding: .9rem 1.3rem;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(black, .11);
+  font-size: 1.2rem;
+  background-color: $color-primary;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    color: white;
+  }
+
+
+  }
+

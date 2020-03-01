@@ -5,16 +5,14 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import validator from '../components/validator';
 import { AuthFunction } from '../redux/actions/user.actions';
+import { removeError } from '../redux/actions/error.actions';
 
 
-/**
-  * @desc the login/ signup page
-  * 
-*/
+
 class Auth extends Component {
     state={
         loggedIn:false,
-        auth:"register",
+        auth:"login",
         error:null,
         loginData: {
           email: "",
@@ -45,7 +43,7 @@ class Auth extends Component {
     }
 
     componentWillMount(){
-    //   this.props.removeError()
+      this.props.removeError()
     }
 
     //update state based on name to input
@@ -144,10 +142,11 @@ class Auth extends Component {
 
     changeAuthState = (value)=>{
       this.setState({auth:value})
+      this.props.removeError()
     }
 
   render() {
-    const { errors,history, removeError } = this.props;
+    const { error,history, removeError } = this.props;
     const{auth, registerData, loginData } = this.state;
     //if there is any change in route remove previous error
     history.listen(() =>{
@@ -158,6 +157,18 @@ class Auth extends Component {
       <div className="auth">
       <section className="auth__left-section"></section>
       <section className="auth__right-section">
+      <div className="alert-error">{
+          error.error === "Email doesn't exist. Please Register" ? 
+          <div>
+          <span>Email doesn't exist. Please </span>
+          <span 
+            className="switch-auth" 
+            style={{color:"blue", cursor:"pointer"}} 
+            onClick={()=>this.changeAuthState("register")}> Register </span>
+          </div>
+           :
+          error.error
+          }</div>
       <form className="form" onSubmit={this.onSubmitHandler} >
         {(auth === "register") ?
           <div>
@@ -253,10 +264,10 @@ class Auth extends Component {
         }
         <input type="submit" className="form-submit-button" value="Submit"/>
       </form>
-      {(auth === "register") &&
+      {(auth === "login") &&
         <div className="login-signup">
-            <span>Registered Already? </span>
-            <span className="switch-auth" onClick={() => this.changeAuthState("login")}>Log In</span>
+            <span>Not Registered Already? </span>
+            <span className="switch-auth" onClick={() => this.changeAuthState("register")}>Register</span>
           </div>
         }
       </section>
@@ -271,7 +282,8 @@ class Auth extends Component {
 
 
 const mapStateToProp = state =>({
-  errors : state.errors
+  error : state.error
 })
 
-export default withRouter(connect(mapStateToProp, {AuthFunction})(Auth))
+
+export default withRouter(connect(mapStateToProp, {AuthFunction, removeError })(Auth))

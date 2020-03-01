@@ -1,21 +1,33 @@
 .navigation{
     height: 20%;
-    position: fixed;
+    position: absolute;
     width: 100%;
     align-items: center;
     display: flex;
     z-index: 20;
-    font-size: 2rem;
+    font-family: 'Fredoka One' ;
     font-weight: bolder;
     text-transform: uppercase;
     color: black;
     padding: 2rem;
+
+    @include responsive(phone){
+        display: block;
+
+    }
 
     &__list{
         flex: 70% 1 1;
         display: flex;
         font-size: 2rem;
         justify-content: space-evenly;
+
+        @include responsive(phone){
+            font-size: 1.5rem;
+            color: orangered;
+    
+        }
+    
     }
 
     &__item{
@@ -30,18 +42,31 @@
         &:visited{
             color: black;
 
-
         }
 
         &:active,
         &:hover{
-            color: white;
+            color: rgba(0, 0, 0, 0.568);
         }
     }
 
 }
 
 .logo-box{
+    display: flex;
+    align-items: center;
     flex: 30% 1 1;
+    @include responsive(phone){
+        display: none;
+
+    }
+    .logo{
+        margin: 2rem;
+
+    }
+
+    h1{
+        color: orangered;
+    }
 }
 

@@ -10,15 +10,13 @@ exports.register = async (req, res, next) =>{
         user = await User.findOne({
             email: email
         })
+        user = user.filterUserData()
         let token = generateToken(user)
             return res.status(200).json({
                 status: 200,
                 message:{
                     token: token,
-                    user:{
-                        _id: user._id,
-                        username: user.username
-                    }
+                    user
                 }
             })
 
@@ -53,16 +51,14 @@ exports.loginIn = async function(req, res, next){
         let confirmPassword = await user.comparePassword(req.body.password) 
         if(confirmPassword){
             let token = generateToken(user)
-            return res.status(200).json({
-                status: 200,
-                message:{
-                    token: token,
-                    user:{
-                        _id: user._id,
-                        username: user.username
+            user = user.filterUserData()            
+                return res.status(200).json({
+                    status: 200,
+                    message:{
+                        token: token,
+                        user
                     }
-                }
-            })
+                })
         }
         else{
             return next({
@@ -72,6 +68,8 @@ exports.loginIn = async function(req, res, next){
             })
         }
     } catch (error) {
+        console.log(error);
+        
         return next({
             status:"404",
             message: "Email/password combination doesn't matter"

@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export function TokenHeader (token) {
+export function TokenHeader (token) {    
     if(token){
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        console.log(axios.defaults.headers);
+        
     }
     else{
         delete axios.defaults.headers.common["Authorization"];
@@ -15,8 +17,9 @@ export function restApi(method, path, data){
             .then((response) => {                
                 return resolve(response.data.message)
             })
-            .catch(error => {
-                return reject(error.response.data.error)
+            .catch(error => {              
+                  
+                return reject(error.response.data)
             })
     })
 }

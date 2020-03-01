@@ -1,10 +1,10 @@
 import {ADD_ERROR, REMOVE_ERROR} from "../actionTypes"
 
-const addError = (error) =>({
+export const addError = (error) =>({
     type: ADD_ERROR,
     payload: error
 })
 
-const removeError = () =>({
+export const removeError = () =>({
     type: REMOVE_ERROR
 })

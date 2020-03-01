@@ -5,8 +5,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const userRouter = require("./routes/auth");
+const shopRoutes = require("./routes/shop")
 const errorHandler = require("./controllers/error")
-
+const checkAuth = require("./middleware/confirmAuth");
 const PORT = process.env.PORT || 6000 ;
 //middleware
 app.use(bodyParser.json());
@@ -15,10 +16,14 @@ app.use(cors());
 
 //routers
 app.use("/auth", userRouter)
-
+app.get("/authenticate-user", checkAuth.verifyUser)
+app.use(checkAuth.protectedRoute);
+app.use("/user/:userId/", checkAuth.confirmUser, shopRoutes);
 app.use(errorHandler)
 
-app.use(express.static(path.join(__dirname,'/client/build')))
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname,'/client/build')))
+}
 
 
 //static file for Production stage

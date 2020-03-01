@@ -1,0 +1,96 @@
+.shop{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+.shop-nav{
+    width: 15%;
+    position: fixed;
+    height: 100%;
+    background-color: $color-primary;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2rem;
+
+    @include responsive(phone){
+      display: none;
+
+    }
+
+    &__nav{
+        background-color: black;
+        padding-top: 20vh;
+        width: 95%;
+        height: 100%;
+    }
+
+    &__list{
+        list-style: none;
+        
+    }
+    &__link{
+        padding: 10px;
+        display: flex;
+        color: white;
+        text-decoration: none;
+    }
+
+    &__item{
+        cursor: pointer;
+
+        &:hover{
+            background-color: $color-primary;
+
+        }
+    }
+
+}
+
+.shop-section{
+    flex: 85% 1 1;
+    margin-left: 15%;
+    height: 100%;
+    padding-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include responsive(phone){
+      padding-top: 15%;
+      margin-left: 0;
+
+    }
+
+    .title {
+        font-size: 4 rem;
+        margin-bottom: 25px;
+    
+        .item-link{
+          text-decoration: none;
+        }
+    
+          &:hover{
+            transform: scale(1, 1.01);
+            opacity: .8;
+          }
+        
+        }
+    
+    
+      .preview {
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+}
+
+.active{
+    background-color: $color-primary;
+    color: white;
+
+}
+

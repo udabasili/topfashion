@@ -2,12 +2,8 @@ import { SET_CURRENT_USER } from "../actionTypes";
 
 const INITIAL_STATE = {
     currentUser: null,
-    isAuthenticated: null,
-
-    
+    isAuthenticated: null,   
 }
-
-
 
 export default function userReducer (state=INITIAL_STATE, action){
     switch (action.type) {

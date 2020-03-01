@@ -5,10 +5,8 @@ import Slide from '../components/slides/slide.jsx';
 
 export default class Home extends Component {
 
-    
     constructor(props) {
       super(props)
-    
       this.state = {
         data: slideData,
       }

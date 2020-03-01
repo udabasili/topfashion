@@ -10,8 +10,11 @@
 @import "./component/slide";
 @import "./component/form";
 @import "./component/button";
+@import "./component/card";
+@import "./component/cart";
 
 @import "./layout/navigation";
 
 @import "./page/home";
-
+@import './page/shop';
+@import "./page/checkout";
