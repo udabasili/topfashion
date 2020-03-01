@@ -9,10 +9,17 @@ const shopRoutes = require("./routes/shop")
 const errorHandler = require("./controllers/error")
 const checkAuth = require("./middleware/confirmAuth");
 const PORT = process.env.PORT || 6000 ;
+
+
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors());
+
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname,'/client/build')))
+}
 
 //routers
 app.use("/auth", userRouter)
@@ -20,10 +27,6 @@ app.get("/authenticate-user", checkAuth.verifyUser)
 app.use(checkAuth.protectedRoute);
 app.use("/user/:userId/", checkAuth.confirmUser, shopRoutes);
 app.use(errorHandler)
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname,'/client/build')))
-}
 
 
 //static file for Production stage
