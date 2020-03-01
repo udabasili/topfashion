@@ -24,8 +24,7 @@ app.use(express.static(path.join(__dirname,'/client/build')))
 //routers
 app.use("/auth", userRouter)
 app.get("/authenticate-user", checkAuth.verifyUser)
-// app.use(checkAuth.protectedRoute);
-app.use("/user/:userId/", checkAuth.confirmUser, shopRoutes);
+app.use("/user/:userId/", checkAuth.confirmUser, checkAuth.protectedRoute, shopRoutes);
 app.use(errorHandler)
 
 

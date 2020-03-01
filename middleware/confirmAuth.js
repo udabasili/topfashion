@@ -52,6 +52,8 @@ exports.verifyUser = function (req, res, next) {
 // check token before giving access to account 
 exports.protectedRoute = function(req, res, next){
     try{
+        console.log(req.headers['authorization']);
+        
         let token = (req.headers['authorization']).split(" ")[1];
         if (!token) {
             return res.status(401).json({message: 'Must pass token'});
@@ -86,6 +88,7 @@ exports.protectedRoute = function(req, res, next){
 
             
         } catch (error) {
+            console.log(error);
             
              return next({
                 status:401,
