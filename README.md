@@ -1,6 +1,10 @@
 # Top Fashion
 This is a sample clothing shop built  with  React , Node  amongst other libraries. 
-Users have the ability to sign Up , add the products already listed to shopping carts and simulate a credit card payments.
+Users have the ability to: 
+- Create new accounts 
+- Shop through the products already listed as samples 
+- Simulate a credit card payments.
+
 So basically the user get to have the full experience of an actually online clothing store without making any payment 
 
 
