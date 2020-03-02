@@ -7,4 +7,4 @@ Users have the ability to sign Up , add the products already listed to shopping 
 
 
 ### To Run
-The best way is to visit the heroku website for the deployed website  [Top Shop](https://top-fashion.herokuapp.com/).
+The best way is to visit  website  [Top Shop](https://top-fashion.herokuapp.com/).
