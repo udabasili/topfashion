@@ -13,4 +13,4 @@ So basically the user get to have the full experience of an actually online clot
 
 
 ### To Run
-The best way is to visit  website  [Top Shop](https://top-fashion.herokuapp.com/).
+The best way is to visit  website  [Top Shop](https://www.top-fashion.me/).
