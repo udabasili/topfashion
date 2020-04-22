@@ -8,7 +8,7 @@ import { verifyUser, logOut, setTokenHeader,  } from './redux/actions/user.actio
 import Shop from './pages/shop-page.component';
 import CheckOut from './pages/checkout.component';
 import PrivateRoute from './components/protected-route.component';
-
+import { removeError } from './redux/actions/error.actions';
 
 if (localStorage.getItem("validator")) {  
   setTokenHeader(localStorage.getItem("validator"));
@@ -17,10 +17,10 @@ if (localStorage.getItem("validator")) {
 
 class App extends React.Component { 
 
-  componentDidMount(){
-    console.log(localStorage.getItem("validator"), this.props.currentUser);
-    
+  componentWillMount(){
+    this.props.removeError()
   }
+
   render(){
     const {currentUser} =this.props
 
@@ -57,7 +57,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   verifyUser: () => dispatch(verifyUser()),
-  logOut: () => dispatch(logOut())
+  logOut: () => dispatch(logOut()),
+  removeError: () => dispatch(removeError())
+
 })
 
 export default withRouter(connect(mapStateToProps , mapDispatchToProps)(App));

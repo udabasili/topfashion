@@ -42,7 +42,9 @@ class Auth extends Component {
 
     }
 
+    
     componentWillUnmount(){
+      console.log("out")
       this.props.removeError()
     }
 
@@ -282,4 +284,13 @@ const mapStateToProp = state =>({
 })
 
 
-export default withRouter(connect(mapStateToProp, {AuthFunction, removeError })(Auth))
+
+const mapDispatchToProps = dispatch => ({
+  AuthFunction: (auth, loginData) => dispatch(AuthFunction(auth, loginData)),
+  removeError: () => dispatch(removeError())
+
+})
+
+
+
+export default withRouter(connect(mapStateToProp, mapDispatchToProps)(Auth))
