@@ -107,6 +107,7 @@ class Auth extends Component {
   }
 
   onSubmitHandler = (e) =>{
+    
       let userData = {
           username:this.state.registerData.username.value,
           email:this.state.registerData.email.value,
@@ -140,8 +141,8 @@ class Auth extends Component {
   
 
     changeAuthState = (value)=>{
-      this.setState({auth:value})
-      this.props.removeError()
+      this.setState({auth:value}, () => this.props.removeError())
+      
     }
 
   render() {
@@ -159,7 +160,7 @@ class Auth extends Component {
       <div className="alert-error">{
           error.error === "Email doesn't exist. Please Register" ? 
           <React.Fragment>
-          <span>Email doesn't exist. Please </span>
+          <span>Email doesn't exist. Please  </span>
           <span 
             className="switch-auth" 
             style={{color:"blue", cursor:"pointer"}} 
