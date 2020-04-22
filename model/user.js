@@ -47,28 +47,25 @@ userSchema.methods.comparePassword = async function (password, next){
 
 userSchema.methods.addToCart = async function(addedItem){
     try {
-        let updatedCartItems =[...this.cartItems]
-    let existedItem = updatedCartItems.find(product =>{
-        return product.id === addedItem.id
-    })    
-    if(existedItem){
-        updatedCartItems =  updatedCartItems.map((item) => ((addedItem.id === item.id)
-        ? ({ ...item, quantity: item.quantity + 1 })
-        : item))    
-        this.cartItems =  updatedCartItems
-        
-        
-    }
-    else{
-        this.cartItems = [...updatedCartItems, {...addedItem, quantity:1}]
+        let updatedCartItems =[...this.cartItems];
+        let existedItem = updatedCartItems.find(product =>{
+            return product.id === addedItem.id;
+        })    
+        if(existedItem){
+            updatedCartItems =  updatedCartItems.map((item) => ((addedItem.id === item.id)? 
+                ({ ...item, quantity: item.quantity + 1 }): 
+                item))    
+            this.cartItems =  updatedCartItems;
+            
+            
+        }
+        else{
+            this.cartItems = [...updatedCartItems, {...addedItem, quantity:1}]
 
-    }
-        
+        }
         return this.save()
-        
-    } catch (error) {
-        console.log(error);
-        
+            
+    } catch (error) {        
     }
     
 }
@@ -88,7 +85,6 @@ userSchema.methods.removeQuantityFromCart = function(itemId){
           ? ({ ...item, quantity: item.quantity - 1 })
           : item
       ));
-
     return this.save();
 }
 
@@ -97,8 +93,6 @@ userSchema.methods.clearItemFromCart = function(itemId){
     let existedItem =  updatedCartItems.find(product =>{
         return product.id === itemId
     })    
-    console.log(itemId);
-    
     if(existedItem){
         this.cartItems =  updatedCartItems.filter((cartItem)=>cartItem.id !== itemId)
         return this.save();
@@ -107,7 +101,6 @@ userSchema.methods.clearItemFromCart = function(itemId){
 
 
 userSchema.methods.filterUserData = function() {
-
     let obj = this.toObject();
     delete obj.password;
     delete obj.email;

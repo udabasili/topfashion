@@ -17,12 +17,10 @@ exports.register = async (req, res, next) =>{
                 message:{
                     token: token,
                     user
-                }
-            })
+            }
+        })
 
-    } catch (error) {        
-        console.log(error);
-        
+    } catch (error) {                
         if (error.code ===11000) {
           error.message = "Sorry, this email/username is taken" ;
         }
@@ -31,8 +29,6 @@ exports.register = async (req, res, next) =>{
             message:error.message
         })
     }
-    
-
 }
 
 exports.loginIn = async function(req, res, next){
@@ -58,21 +54,20 @@ exports.loginIn = async function(req, res, next){
                         token: token,
                         user
                     }
-                })
+                }
+            )
         }
         else{
             return next({
                 status:"404",
-                message: "Email/password combination doesn't matter"
+                message: "Email and password combination doesn't match"
 
             })
         }
-    } catch (error) {
-        console.log(error);
-        
+    } catch (error) {        
         return next({
             status:"404",
-            message: "Email/password combination doesn't matter"
+            message: "Email and password combination doesn't match"
 
         })
     }

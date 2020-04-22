@@ -8,7 +8,7 @@ exports.verifyUser = function (req, res, next) {
             return next({
                 status:401,
                 message:"unAuthorized User"
-            });
+            })
         }
         jwt.verify(token, process.env.SECRET_KEY, async function(error, user){
             if(error){
@@ -28,7 +28,8 @@ exports.verifyUser = function (req, res, next) {
                                 username: user.username
                             }
                         }
-                    })   
+                    }
+                )   
             } 
             else {
                 return next({
@@ -36,11 +37,8 @@ exports.verifyUser = function (req, res, next) {
                     message:"unAuthorized User"
                 })
             }
-        })
-
-            
+        }) 
         } catch (error) {
-            
              return next({
                 status:401,
                 message:"unAuthorized User"
@@ -49,7 +47,6 @@ exports.verifyUser = function (req, res, next) {
         
     }
 
-// check token before giving access to account 
 exports.protectedRoute = function(req, res, next){
     try{
         console.log(req.headers['authorization']);
@@ -76,40 +73,32 @@ exports.protectedRoute = function(req, res, next){
         
     }
 
-// check if it is the right user
-
 exports.confirmUser  = function(req, res, next){
     try {
-        console.log(req.headers);
-        
         let token = (req.headers['authorization']).split(" ")[1];
-
-    if (!token) {
-        return res.status(401).json({message: 'Must pass token'});
-    }
-    jwt.verify(token, process.env.SECRET_KEY, async function(error, user){
-        if(error){
-            return next({
-                status:401,
-                message:"unAuthorized User"
-            });
+        if (!token) {
+            return res.status(401).json({message: 'Must pass token'});
         }
-        user = await User.findOne({username: user.username})
-        req.user = user;
-        if (user) {
-            return next();
-        } 
-        else {
-            return next({
-                status:401,
-                message:"unAuthorized User"
-            })
-        }
-    })
-
-        
+        jwt.verify(token, process.env.SECRET_KEY, async function(error, user){
+            if(error){
+                return next({
+                    status:401,
+                    message:"unAuthorized User"
+                });
+            }
+            user = await User.findOne({username: user.username})
+            req.user = user;
+            if (user) {
+                return next();
+            } 
+            else {
+                return next({
+                    status:401,
+                    message:"unAuthorized User"
+                })
+            }
+        })   
     } catch (error) {
-        
          return next({
             status:401,
             message:"unAuthorized User"

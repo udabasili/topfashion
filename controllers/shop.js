@@ -1,11 +1,7 @@
-
 const User = require("../model/user");
-
-
 
 exports.postCart = async function (req, res, next){
     try {
-
         const cartItem =  req.body;        
         let user =  req.user;        
         await user.addToCart(cartItem)
@@ -14,11 +10,8 @@ exports.postCart = async function (req, res, next){
         return res.status(200).json({
             status:200,
             message: cartItems
-        })
-        
-    } catch (error) {
-        console.log(error);
-        
+        })  
+    } catch (error) {        
         return next({
             status:500,
             message:error
@@ -34,10 +27,8 @@ exports.getUserCartItems = function(req, res, next){
             status:200,
             message:cartItems
         })
-    } catch (error) {
-        
+    } catch (error) { 
     }
-    
 }
 
 exports.removeItemFromCart = async function(req, res, next){
@@ -51,9 +42,7 @@ exports.removeItemFromCart = async function(req, res, next){
             status:200,
             message: cartItems
         })
-    } catch (error) {
-        console.log(error);
-        
+    } catch (error) {        
         return next({
             status:500,
             message:error
@@ -74,9 +63,7 @@ exports.clearItemFromCart = async function(req, res, next){
             message: cartItems
         })
       
-    } catch (error) {
-        console.log(error);
-        
+    } catch (error) {        
         return next({
             status:500,
             message:error
