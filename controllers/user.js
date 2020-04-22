@@ -60,14 +60,14 @@ exports.loginIn = async function(req, res, next){
         else{
             return next({
                 status:"404",
-                message: "Email and password combination doesn't match"
+                message: "Email and password combination don't match"
 
             })
         }
     } catch (error) {        
         return next({
             status:"404",
-            message: "Email and password combination doesn't match"
+            message: "Email and password combination don't match"
 
         })
     }
