@@ -22,11 +22,7 @@ exports.register = async (req, res, next) =>{
 
     } catch (error) {                
         if (error.code ===11000) {
-          error.message = `<span>Email is already taken. Please </span>
-            <span 
-                className="switch-auth" 
-                style={{color:"blue", cursor:"pointer"}} 
-                onClick={()=>this.changeAuthState("login")}> Login </span>` ;
+          error.message = "Sorry, this email/username is taken" ;
         }
         return next({
             status:500,

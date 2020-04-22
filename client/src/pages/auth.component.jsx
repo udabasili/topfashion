@@ -155,127 +155,123 @@ class Auth extends Component {
 
     return (
       <div className="auth">
-      <section className="auth__left-section"></section>
-      <section className="auth__right-section">
-      <div className="alert-error">{
-          error.error === "Email doesn't exist. Please Register" ? 
-          <React.Fragment>
-          <span>Email doesn't exist. Please  </span>
-          <span 
-            className="switch-auth" 
-            style={{color:"blue", cursor:"pointer"}} 
-            onClick={()=>this.changeAuthState("register")}> Register </span>
-          </React.Fragment>
-           :
-          error.error
-          }</div>
-      <form className="form" onSubmit={this.onSubmitHandler} >
-        {(auth === "register") ?
-          <React.Fragment>
-            <div className="form__component">
-              <i className="form__group__icon"><FontAwesomeIcon icon={faUser}/></i>
-              <div className="form__group">
-                <input 
-                  type="text" 
-                  name="username" 
-                  onChange={this.onChangeHandlerRegister} 
-                  value={registerData.username.value}
-                  className="form__input" required/>
-                <label htmlFor="username" className="form__label">
-                  Username
-                </label>
-              </div>
-            </div>
-            <div className="form__component">
-              <i className="form__group__icon">
-                <FontAwesomeIcon icon={faEnvelope}/>
-              </i>
-              <div className="form__group">
-                <input 
-                  type="email"  
-                  onChange={this.onChangeHandlerRegister}
-                  value={registerData.email.value}
-                  style={{color : registerData.email.validated ? "black" : "red"}}
-                    name="email" 
-                    className="form__input" required/>
-                    <label htmlFor="email" className="form__label">Email</label>
-                </div>
-                </div>
-            <div className="form__component">
-                <i className="form__group__icon"><FontAwesomeIcon icon={faKey}/></i>
+        <section className="auth__left-section"></section>
+        <section className="auth__right-section">
+        <div className="alert-error">{
+            error.error === "Email doesn't exist. Please Register" ? 
+            <React.Fragment>
+            <span>Email doesn't exist. Please Sign In </span>
+            <span 
+              className="switch-auth" 
+              style={{color:"blue", cursor:"pointer"}} 
+              onClick={()=>this.changeAuthState("register")}> Register </span>
+            </React.Fragment>
+            :
+            error.error
+            }</div>
+        <form className="form" onSubmit={this.onSubmitHandler} >
+          {(auth === "register") ?
+            <React.Fragment>
+              <div className="form__component">
+                <i className="form__group__icon"><FontAwesomeIcon icon={faUser}/></i>
                 <div className="form__group">
-                    <input 
-                    type="password" 
-                    name="password" 
-                    onChange={this.onChangeHandlerRegister}
-                    style={{color : registerData.password.validated ? "black" : "red"}}
-                    value={registerData.password.value}
+                  <input 
+                    type="text" 
+                    name="username" 
+                    onChange={this.onChangeHandlerRegister} 
+                    value={registerData.username.value}
                     className="form__input" required/>
-                    <label htmlFor="password" className="form__label">
-                    <span>Password</span>
-                    <span>(Must be at least 7 characters)</span>
-                    </label>
+                  <label htmlFor="username" className="form__label">
+                    Username
+                  </label>
                 </div>
-                </div>
-                <div className="form__component">
+              </div>
+              <div className="form__component">
                 <i className="form__group__icon">
-                    <FontAwesomeIcon icon={faKey}/>
+                  <FontAwesomeIcon icon={faEnvelope}/>
                 </i>
                 <div className="form__group">
-                <input 
-                type="password" 
-                name="confirmPassword" 
-                onChange={this.onChangeHandlerRegister}
-                style={{color : registerData.confirmPassword.validated ? "black" : "red"}}
-                value={registerData.confirmPassword.value}
-                className="form__input" required/>
-                <label htmlFor="confirm-password" className="form__label">Confirm Password</label>
+                  <input 
+                    type="email"  
+                    onChange={this.onChangeHandlerRegister}
+                    value={registerData.email.value}
+                    style={{color : registerData.email.validated ? "black" : "red"}}
+                      name="email" 
+                      className="form__input" required/>
+                      <label htmlFor="email" className="form__label">Email</label>
+                  </div>
+                  </div>
+              <div className="form__component">
+                  <i className="form__group__icon"><FontAwesomeIcon icon={faKey}/></i>
+                  <div className="form__group">
+                      <input 
+                      type="password" 
+                      name="password" 
+                      onChange={this.onChangeHandlerRegister}
+                      style={{color : registerData.password.validated ? "black" : "red"}}
+                      value={registerData.password.value}
+                      className="form__input" required/>
+                      <label htmlFor="password" className="form__label">
+                      <span>Password</span>
+                      <span>(Must be at least 7 characters)</span>
+                      </label>
+                  </div>
+                  </div>
+                  <div className="form__component">
+                  <i className="form__group__icon">
+                      <FontAwesomeIcon icon={faKey}/>
+                  </i>
+                  <div className="form__group">
+                  <input 
+                  type="password" 
+                  name="confirmPassword" 
+                  onChange={this.onChangeHandlerRegister}
+                  style={{color : registerData.confirmPassword.validated ? "black" : "red"}}
+                  value={registerData.confirmPassword.value}
+                  className="form__input" required/>
+                  <label htmlFor="confirm-password" className="form__label">Confirm Password</label>
+              </div>
+              </div>
+          </React.Fragment> :
+          <React.Fragment>
+              <div className="form__component">
+              <i className="form__group__icon">
+                  <FontAwesomeIcon icon={faEnvelope}/>
+              </i>
+              <div className="form__group">
+                  <input 
+                  type="email"  
+                  onChange={this.onChangeHandlerLogin}
+                  value={loginData.email}
+                  name="email" 
+                  className="form__input" required/>
+                  <label htmlFor="email" className="form__label">Email</label>
+              </div>
+              </div>
+              <div className="form__component">
+              <i className="form__group__icon"><FontAwesomeIcon icon={faKey}/></i>
+              <div className="form__group">
+                  <input 
+                  type="password" 
+                  name="password" 
+                  onChange={this.onChangeHandlerLogin}
+                  value={loginData.password}
+                  className="form__input" required/>
+                  <label htmlFor="password" className="form__label">Password</label>
+              </div>
+              </div>
+          </React.Fragment>
+          }
+          <input type="submit" className="form-submit-button" value="Submit"/>
+        </form>
+        {(auth === "login") &&
+          <div className="login-signup">
+              <span>Not Registered Already? </span>
+              <span className="switch-auth" onClick={() => this.changeAuthState("register")}>Register</span>
             </div>
-            </div>
-        </React.Fragment> :
-        <React.Fragment>
-            <div className="form__component">
-            <i className="form__group__icon">
-                <FontAwesomeIcon icon={faEnvelope}/>
-            </i>
-            <div className="form__group">
-                <input 
-                type="email"  
-                onChange={this.onChangeHandlerLogin}
-                value={loginData.email}
-                name="email" 
-                className="form__input" required/>
-                <label htmlFor="email" className="form__label">Email</label>
-            </div>
-            </div>
-            <div className="form__component">
-            <i className="form__group__icon"><FontAwesomeIcon icon={faKey}/></i>
-            <div className="form__group">
-                <input 
-                type="password" 
-                name="password" 
-                onChange={this.onChangeHandlerLogin}
-                value={loginData.password}
-                className="form__input" required/>
-                <label htmlFor="password" className="form__label">Password</label>
-            </div>
-            </div>
-        </React.Fragment>
-        }
-        <input type="submit" className="form-submit-button" value="Submit"/>
-      </form>
-      {(auth === "login") &&
-        <div className="login-signup">
-            <span>Not Registered Already? </span>
-            <span className="switch-auth" onClick={() => this.changeAuthState("register")}>Register</span>
-          </div>
-        }
-      </section>
-        
-        
-        
+          }
+        </section>  
       </div>
-        
     )
   }
 }
