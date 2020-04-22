@@ -158,19 +158,19 @@ class Auth extends Component {
       <section className="auth__right-section">
       <div className="alert-error">{
           error.error === "Email doesn't exist. Please Register" ? 
-          <div>
+          <React.Fragment>
           <span>Email doesn't exist. Please </span>
           <span 
             className="switch-auth" 
             style={{color:"blue", cursor:"pointer"}} 
             onClick={()=>this.changeAuthState("register")}> Register </span>
-          </div>
+          </React.Fragment>
            :
           error.error
           }</div>
       <form className="form" onSubmit={this.onSubmitHandler} >
         {(auth === "register") ?
-          <div>
+          <React.Fragment>
             <div className="form__component">
               <i className="form__group__icon"><FontAwesomeIcon icon={faUser}/></i>
               <div className="form__group">
@@ -231,8 +231,8 @@ class Auth extends Component {
                 <label htmlFor="confirm-password" className="form__label">Confirm Password</label>
             </div>
             </div>
-        </div> :
-        <div>
+        </React.Fragment> :
+        <React.Fragment>
             <div className="form__component">
             <i className="form__group__icon">
                 <FontAwesomeIcon icon={faEnvelope}/>
@@ -259,7 +259,7 @@ class Auth extends Component {
                 <label htmlFor="password" className="form__label">Password</label>
             </div>
             </div>
-        </div>
+        </React.Fragment>
         }
         <input type="submit" className="form-submit-button" value="Submit"/>
       </form>

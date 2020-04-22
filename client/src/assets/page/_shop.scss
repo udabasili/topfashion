@@ -57,7 +57,7 @@
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-
+    
     @include responsive(phone){
       padding-top: 15%;
       margin-left: 0;

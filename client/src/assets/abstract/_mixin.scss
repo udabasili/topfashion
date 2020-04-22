@@ -6,15 +6,6 @@
     position: relative;
 }
 
-  /**MEDIA QUERY MANAGER*/
-  /*
-  0-600 px phone
-  600  -900px tablet potrait
-  900 -1200 px tablet landscape
-  1200 -1800 - where normal styles apply
-  */
-
-
 @mixin responsive($device) {
     @if $device == phone {
         @media only screen and (max-width: 600px) { @content };    

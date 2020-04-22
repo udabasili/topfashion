@@ -1,7 +1,7 @@
 .checkout {
     width: 85%;
     min-height: 90vh;
-    padding-top: 10%;
+    padding-top: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +15,9 @@
       justify-content: space-between;
       border-bottom: 1px solid darkgrey;
      
+      @include responsive(phone){
+        display: none;
+      }
     }
   
     &__total {
@@ -31,8 +34,12 @@
     justify-content: space-between;
     border-bottom: 1px solid darkgrey;
     padding: 15px 5px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     align-items: center;
+
+    @include responsive(phone){
+      justify-content: flex-start;
+    }
   
     &__image-container {
       width: 23%;
@@ -43,17 +50,17 @@
         height: 100%;
       }
     }
+
     &__name,
     &__quantity,
     &__price {
       margin: 3rem;
-  
+      font-size: 2rem;
     }
   
     &__quantity {
       display: flex;
       margin: 2rem;
-
       font-size: 1.6rem;
       justify-content: space-around;
     }

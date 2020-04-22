@@ -4,7 +4,7 @@
     margin-bottom: 60px;
 
 }
-/**block create line breaks before and after them*/
+
 .header-primary-main{
   display: block;
   font-family: 'Anton' ;
@@ -24,32 +24,32 @@
     font-size: 2rem;
     font-weight: 400;
     letter-spacing: 3px;
+
     @include responsive(phone){
       font-size: 1.1rem;
- 
    }
+}
 
+.heading-secondary{
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $color-primary-dark;
+  letter-spacing: .2rem;
+}
+
+.heading-tertiary{
+  font-size: 1.8rem;
+  color: $color-primary-dark;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph{
+  font-size: 1.6rem;
 
 }
-.heading-secondary{
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: $color-primary-dark;
-    letter-spacing: .2rem;
-  }
 
-  .heading-tertiary{
-    font-size: 1.8rem;
-    color: $color-primary-dark;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  .paragraph{
-    font-size: 1.6rem;
-  
-  }
-  .paragraph:not(:last-child){
-    margin-bottom: 3rem;
-  }
+.paragraph:not(:last-child){
+  margin-bottom: 3rem;
+}
