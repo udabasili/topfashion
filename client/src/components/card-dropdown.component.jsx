@@ -7,7 +7,6 @@ import { selectCartItems } from '../redux/selectors/cart.selector';
 import { cartButton } from '../redux/actions/cart.actions';
 
 const CartDropDown = ({ cartItems, toggleDropdown }) => {
-  console.log(cartItems);
   return(
     <div className="dropdown">
       <div className="dropdown__items">

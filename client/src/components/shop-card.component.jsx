@@ -6,17 +6,13 @@ import { addError } from '../redux/actions/error.actions';
 function ShopCard({ item, addItem, history, addError }) {
   const {id, name, price, imageUrl } = item;
   const addItemToCart = (item) =>{
-
-      addItem(item).then((result) => {        
-      }).catch((err) => {
-        if(err.status === 401){
-          history.push("/auth")
-          addError("Please Login")
-
-
-        }
-        
-      });
+    addItem(item).then((result) => {        
+    }).catch((err) => {
+      if(err.status === 401){
+        history.push("/auth")
+        addError("Please Login")
+      }
+    });
   }
   return (
     <div id={id} className="card">

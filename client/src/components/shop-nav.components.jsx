@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 
 export default function ShopNav() {
-    
   return (
       <div className="shop-nav">
         <nav className="shop-nav__nav">

@@ -13,9 +13,10 @@ export default class Home extends Component {
     }
     
   render() {
+  const {data} = this.state
     return (
         <div className="home">
-            <Slide slideImages={this.state.data} />
+            <Slide slideImages={data} />
         </div>
     )
   }

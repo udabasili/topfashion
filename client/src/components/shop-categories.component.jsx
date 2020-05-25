@@ -4,10 +4,8 @@ import { connect } from 'react-redux'
 import { selectFilteredCategory } from '../redux/selectors/shop.selector'
 import ShopNav from './shop-nav.components'
 
-
 class ShopCategories extends Component {
   render() {
-      
     return (
       <div className="shop">
         <ShopNav />

@@ -6,7 +6,6 @@ import { cartButton } from '../redux/actions/cart.actions';
 
 
 const CartIcon = ({ toggleDropdown, itemCount }) => {
-  
   return (
   <div className="cart-icon" onClick={()=>toggleDropdown()}>
     <Bag className="shopping-icon" />
