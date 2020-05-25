@@ -52,14 +52,13 @@
     flex: 85% 1 1;
     margin-left: 15%;
     height: 100%;
-    padding-top: 10vh;
+    padding-top: 20vh;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
     
     @include responsive(phone){
-      padding-top: 20vh;
       margin-left: 0;
 
     }
