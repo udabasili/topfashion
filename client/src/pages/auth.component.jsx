@@ -76,6 +76,7 @@ class Auth extends Component {
         [name]: {
           ...prevState.registerData[name],
           value: value,
+          enableButton: prevState.registerData.email.validated && prevState.registerData.password.validated && prevState.registerData.confirmPassword.validated,
           validated: validator(
             name,
             name === "confirmPassword"
@@ -87,7 +88,7 @@ class Auth extends Component {
           ),
         },
       },
-    }), () => this.onValidateButton());
+    }));
   }
 
   onValidateButton = () =>{
