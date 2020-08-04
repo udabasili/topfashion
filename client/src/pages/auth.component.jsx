@@ -280,7 +280,7 @@ class Auth extends Component {
               </div>
           </React.Fragment>
           }
-          <input type="submit" disabled={!enableButton} className="form-submit-button" value="Submit"/>
+          <input type="submit"  className="form-submit-button" value="Submit"/>
         </form>
         {(auth === "login") &&
           <div className="login-signup">
