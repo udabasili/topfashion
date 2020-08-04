@@ -3,7 +3,13 @@ import { ReactComponent as Bag } from '../assets/shopping-bag.svg';
 import {connect} from 'react-redux';
 import { cartTotal } from '../redux/selectors/cart.selector';
 import { cartButton } from '../redux/actions/cart.actions';
+import PropTypes from "prop-types";
 
+/*
+ * Cart icon
+ * @param {string} itemCount - number of item in cart
+ * @param {function} toggleDropdown - action of showing or hiding the dropdown
+ */
 
 const CartIcon = ({ toggleDropdown, itemCount }) => {
   return (
@@ -14,7 +20,10 @@ const CartIcon = ({ toggleDropdown, itemCount }) => {
   )
 };
 
-
+CartIcon.propTypes = {
+  itemCount: PropTypes.number.isRequired,
+  toggleDropdown: PropTypes.func.isRequired
+}
 
 const mapStateToProps = (state) =>({
   itemCount: cartTotal(state),

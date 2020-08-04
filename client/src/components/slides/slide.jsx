@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import SlideCards from './slide-cards/slide-cards.component';
 
+/**
+ * Class that handles the main slide creation
+ */
 export default class Slide extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +15,7 @@ export default class Slide extends Component {
 
   componentDidMount(){
 	  this.runSlide = setInterval(()=>{
-			this.onClickRightButtonHandler()
+			this.onSlideMovementHandler()
 	  }, 2000)
   }
 
@@ -19,22 +23,16 @@ export default class Slide extends Component {
 	  clearInterval(this.runSlide)
   }
 
-		// Slide button for the left and right
-	onClickRightButtonHandler =() => {
+  /**
+   * This handles the movement of the slide content
+   */
+	onSlideMovementHandler = () => {
 		if (this.state.currentSlide < 2) {
 			this.setState((prevState) => ({ currentSlide: prevState.currentSlide + 1 }),
 			);
 		} else {
 		this.setState({ currentSlide: 0 },
 			);
-		}
-	}
-	onClickLeftButtonHandler =() => {
-		if (this.state.currentSlide === 0) {
-		this.setState({ currentSlide: 2 },
-			);
-		} else {
-		this.setState((prevState) => ({ currentSlide: prevState.currentSlide - 1 }));
 		}
 	}
 

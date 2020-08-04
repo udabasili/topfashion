@@ -1,90 +1,145 @@
 .shop{
-    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;
+
+    @include responsive(phone) {
+      flex-direction: column;
+
+    }
 }
 
 .shop-nav{
-    width: 15%;
-    position: fixed;
-    height: 100%;
-    background-color: $color-primary;
-    color: white;
-    text-transform: uppercase;
-    font-size: 2rem;
+  width: 15%;
+  position: fixed;
+  height: 100%;
+  background-color: $color-primary;
+  color: white;
+  text-transform: uppercase;
+  font-size: 2rem;
 
-    @include responsive(phone){
-      display: none;
+  @include responsive(phone){
+    padding-top: 10vh;
+    position: relative;
+    width: 100%;
+    
+  }
 
-    }
+  @include responsive(tab-port) {
+    width: 20%;
 
-    &__nav{
-        background-color: black;
-        padding-top: 20vh;
-        width: 95%;
-        height: 100%;
-    }
+  }
 
-    &__list{
-        list-style: none;
-        
-    }
-    &__link{
-        padding: 10px;
+  @include responsive(tab-land) {
+    width: 20%;
+
+  }
+  &__nav{
+      background-color: black;
+      display: block;
+      padding-top: 20vh;
+      width: 95%;
+      height: 100%;
+
+      @include responsive(phone) {
         display: flex;
-        color: white;
-        text-decoration: none;
+        padding-top: 0;
+        width: 100%;
+      }
+
+      @include responsive(tab-port){
+        padding-top: 10vh;
+      }
+  }
+
+  &__list:nth-child(1){
+      list-style: none;
+
+      @include responsive(phone){
+        display: flex;
+        width: 54%;
+        justify-content: flex-end;
+      }
+      
+  }
+
+  &__list:nth-child(2) {
+    list-style: none;
+
+    @include responsive(phone) {
+      display: flex;
+      width: 44%;
     }
 
-    &__item{
-        cursor: pointer;
+  }
+  &__link{
+      padding: 10px;
+      display: flex;
+      color: white;
+      text-decoration: none;
 
-        &:hover{
-            background-color: $color-primary;
+      @include responsive(phone) {
+        padding: 10px 20px 10px 10px;
+      }
+  }
 
-        }
-    }
+  &__item{
+      cursor: pointer;
+
+      &:hover{
+          background-color: $color-primary;
+
+      }
+  }
 
 }
 
 .shop-section{
-    flex: 85% 1 1;
-    margin-left: 15%;
-    height: 100%;
-    padding-top: 20vh;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    @include responsive(phone){
-      margin-left: 0;
+  flex: 85% 1 1;
+  margin-left: 15%;
+  height: 100%;
+  padding-top: 20vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  @include responsive(phone){
+    flex: 80% 1 1;
+    margin-left: 0;
+    padding-top: 10vh;
+  }
 
-    }
+  @include responsive(tab-port) {
+    flex: 80% 1 1;
+    margin-left: 20%;
+  }
 
-    .title {
-        font-size: 4 rem;
-        margin-bottom: 25px;
-    
-        .item-link{
-          text-decoration: none;
-        }
-    
-          &:hover{
-            transform: scale(1, 1.01);
-            opacity: .8;
-          }
-        
-        }
-    
-    
-      .preview {
-        display: flex;
-        justify-content: space-between;
+  @include responsive(tab-land) {
+    flex: 80% 1 1;
+    margin-left: 20%;
+  }
+  .title {
+      font-size: 4 rem;
+      margin-bottom: 25px;
+  
+      .item-link{
+        text-decoration: none;
       }
-
-
+  
+        &:hover{
+          transform: scale(1, 1.01);
+          opacity: .8;
+        }
+      
+      }
+  
+  
+    .preview {
+      display: flex;
+      justify-content: space-between;
+    }
 }
 
 .active{

@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ShopNav from './shop-nav.components'
 import ItemCard from './shop-card.component'
 import { connect } from 'react-redux'
 import { selectItems } from '../redux/selectors/shop.selector'
 
 
-class ShopOverview extends Component {
+class ShopOverview extends React.PureComponent {
   render() {
     return (
       <div className="shop">

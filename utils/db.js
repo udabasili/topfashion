@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
+const { mongoDbDevelopment, mongoDbProduction } = require("../config");
 mongoose.Promise = Promise;
 
 mongoose.set("debug", true);
 if (process.env.NODE_ENV === 'production') {
-    mongoose.connect(process.env.MONGOLAB_PURPLE_URI, { 
+    mongoose.connect(mongoDbProduction, { 
     useFindAndModify: true, useNewUrlParser: true , useUnifiedTopology: true})
 }
 else{
-    mongoose.connect("mongodb://localhost/top-shop", { 
+    mongoose.connect(mongoDbDevelopment, { 
     useFindAndModify: true, useNewUrlParser: true , useUnifiedTopology: true})
 }
 

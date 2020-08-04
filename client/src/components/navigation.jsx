@@ -5,6 +5,13 @@ import { logOut } from '../redux/actions/user.actions';
 import CartIcon from './cart-icon.components';
 import CartDropDown from "./card-dropdown.component"
 
+/*
+ * @param {object} currentUser 
+ * @param {function} logUserOut 
+ * @param {function} hideDropDown 
+
+ */
+
 function Navigation({currentUser, logUserOut, hideDropDown}) {
 
   const [authState, setAuthState] = useState("")
@@ -19,6 +26,7 @@ function Navigation({currentUser, logUserOut, hideDropDown}) {
     <nav className="navigation">
         <div className="logo-box">
             <NavLogo className="logo"/>
+            <span>Top Fashion</span>
         </div>
         <ul className="navigation__list">
             <li className="navigation__item"><a href="/" className="navigation__link">Home</a></li>

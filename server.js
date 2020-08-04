@@ -8,7 +8,7 @@ const userRouter = require("./routes/auth");
 const shopRoutes = require("./routes/shop")
 const errorHandler = require("./controllers/error")
 const checkAuth = require("./middleware/confirmAuth");
-const PORT = process.env.PORT || 6000 ;
+const { port } = require("./config");
 
 
 //middleware
@@ -34,11 +34,11 @@ app.get("/*", (req, res)=>{
     res.sendFile(path.join(__dirname, '/client/build/index.html'))
 })
 
-app.listen(PORT, (req, res) =>{
+app.listen(port, () =>{
     mongoConnect.on('error', console.error.bind(console, 'MongoDB connection error:'));
     mongoConnect.once('open', function(data) {
     console.log("Mongoose database connected")
-    console.log(`${PORT} is running`)
+    console.log(`${port} is running`)
 
     })
 

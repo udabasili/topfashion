@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CheckOutItem from '../components/checkout-item.component';
 import StripeCheckoutButton from '../components/stripe-button.component';
-// import CheckOutItem from '../../../../../components/topshop/checkout-item/checkout-item.component';
-// import StripeCheckoutButton from "../../../../../components/topshop/stripe-button/stripe-button.component"
-
 
 class CheckOut extends Component {
-
   render() {
     const { items, total } = this.props;
     return (

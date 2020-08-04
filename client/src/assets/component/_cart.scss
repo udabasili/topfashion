@@ -6,6 +6,8 @@
   justify-content: center;
   cursor: pointer;
 
+  
+
   .shopping-icon {
     width: 100%;
     height: 100%;
@@ -13,6 +15,7 @@
 
   .item-count {
     position: absolute;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 60%;
@@ -31,24 +34,12 @@
   padding: 2rem;
   border: 1px solid black;
   background-color: white;
-  top: 8rem;
+  top: 15vh;
   right: 4%;
   z-index: 5;
 
   @include responsive(phone){
-    top: 10rem;
-  }
-
-  @include responsive(tab-port) { 
-    top: 10rem;
-  }
-
-  @include responsive(tab-land) { 
-    top: 10rem;
-  }
-  @include responsive(big-desktop) {
-    top: 10rem;
-
+    top: 10vh;
   }
 
   &__item {
@@ -64,6 +55,7 @@
   
     &__details {
       padding: 1.5rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
       .name {
         display: block;
@@ -86,7 +78,7 @@
   }
 
   &__items {
-    height: 24rem;
+    height: 18rem;
     display: flex;
     border: 1px solid grey;
     flex-direction: column;

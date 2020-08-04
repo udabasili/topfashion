@@ -1,20 +1,20 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout"
-
+import Image from '../assets/tie.svg'
 const StripeCheckoutButton =({price}) =>{
-    //stripe needs the value in cents
     const priceForStripe = price * 100;
-    const publishableKey = process.env.STRIPE_API
+    const publishableKey = process.env.STRIPE_API;
+
     return(
         <StripeCheckout
             label="Pay Now"
             name="Top Fashion"
             billingAddress
             shippingAddress
-            image="https://svgshare.com/i/CUz.svg"
-            description={`Your Total is $${price}`}
+            image={Image}
+            description={`Total: $${price}`}
             amount={priceForStripe}
-            panelLabel="Pay"
+            panelLabel="Pay Now"
             token={f=>f}
             stripeKey={publishableKey}
         />

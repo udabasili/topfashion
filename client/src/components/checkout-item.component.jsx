@@ -3,6 +3,17 @@ import { connect } from 'react-redux';
 import { addItemToCart, removeItemFromCart, clearItemFromCart } from '../redux/actions/cart.actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from "prop-types";
+
+/*
+ * Component handles the check out of items added to cart
+ * @param {object} item 
+ * @param {function} removeItem - remove item from cart by one unit
+ * @param {function} addItem - add item to cart by one unit
+ * @param {function} clearItemFromCart - remove item from cart total
+
+ */
+
 
 const CheckOutItem = ({item, removeItem, addItem, clearItemFromCart}) => {
   const {id, name, imageUrl, price, quantity} = item;
@@ -48,5 +59,12 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (cartItem) => dispatch(addItemToCart(cartItem)),
 
 });
+
+CheckOutItem.propTypes = {
+  addItem: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  clearItemFromCart: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(CheckOutItem);

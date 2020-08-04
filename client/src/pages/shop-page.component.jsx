@@ -4,13 +4,13 @@ import ShopOverview from '../components/shop-overview.component'
 import ShopCategories from '../components/shop-categories.component'
 
 const  Shop = (props) => {
-      const {match} = props
-    return (
-      <Switch>
-        <Route exact path={`${match.path}/all`} component={ShopOverview}/>
-        <Route exact path={`${match.path}/:categoryId`} component={ShopCategories}/>
-      </Switch>
-      )
+  const {match} = props
+  return (
+    <Switch>
+      <Route exact path={`${match.path}/all`} component={ShopOverview}/>
+      <Route exact path={`${match.path}/:categoryId`} component={ShopCategories}/>
+    </Switch>
+    )
     
 }
 

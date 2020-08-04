@@ -1,6 +1,4 @@
 /*****BUTTON STYLINGS****/
-
-
 .form-submit-button{
     display: inline-block;
     background-color: $color-primary;
@@ -13,6 +11,17 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1.4rem;
+
+    &:disabled{
+      background-color: #cccccc;
+      color: #666666;
+      pointer-events: none;
+
+    }
+    &:required{
+      border: none;
+      outline: none;
+    }
   
   @include responsive(phone){
     padding: 1.2rem 2.1rem;
@@ -69,22 +78,20 @@
   }
 }
 
-.styled-button {
+.custom-button {
+  border: 2px solid black;
+  padding: 10px 20px;
+  background-color: transparent;
+  cursor:pointer;
+  color: $color-primary;
+  background-color:black;
   letter-spacing: 0.5px;
-  line-height: 4rem;
-  padding: .9rem 1.3rem;
   outline: none;
-  box-shadow: 0 2px 2px rgba(black, .11);
   font-size: 1.2rem;
-  background-color: $color-primary;
-  color: black;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
   font-weight: bolder;
   border: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
 
   &:hover {
     color: white;

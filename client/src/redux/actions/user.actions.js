@@ -3,7 +3,6 @@ import { restApi, TokenHeader } from "../../services/api";
 import { addError, removeError } from "./error.actions";
 import { getUserCartItems } from "./cart.actions";
 
-
 const setCurrentUser = (user) =>({
     type:SET_CURRENT_USER,
     payload:user

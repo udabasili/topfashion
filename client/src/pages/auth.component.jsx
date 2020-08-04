@@ -7,12 +7,11 @@ import validator from '../components/validator';
 import { AuthFunction } from '../redux/actions/user.actions';
 import { removeError } from '../redux/actions/error.actions';
 
-
-
 class Auth extends Component {
     state={
         loggedIn:false,
         auth:"login",
+        enableButton: false,
         error:null,
         loginData: {
           email: "",
@@ -42,9 +41,17 @@ class Auth extends Component {
 
     }
 
+    componentDidMount(){
+      if(this.state.auth === 'login'){
+        this.setState((prevState) => ({
+          ...prevState,
+          enableButton: true,
+        }));
+      }
+      
+    }
     
     componentWillUnmount(){
-      console.log("out")
       this.props.removeError()
     }
 
@@ -62,54 +69,63 @@ class Auth extends Component {
     //handle the onchange for Register state
     onChangeHandlerRegister = (e) =>{
     const {name, value} = e.target;
-    this.setState((prevState)=>({
-        ...prevState,
-        registerData: {
+    this.setState((prevState) => ({
+      ...prevState,
+      registerData: {
         ...prevState.registerData,
-        [name]: ({
+        [name]: {
           ...prevState.registerData[name],
           value: value,
-          validated: validator(name, 
-            name === "confirmPassword" ?  {
-              password:this.state.registerData.password.value,
-              confirm: value
-              } : value)
-          })
-        }
-      })
-    )
+          validated: validator(
+            name,
+            name === "confirmPassword"
+              ? {
+                  password: this.state.registerData.password.value,
+                  confirm: value,
+                }
+              : value
+          ),
+        },
+      },
+    }), () => this.onValidateButton());
   }
 
-  onFocusHandler = (e) =>{
-    const {name} = e.target
-    this.setState((prevState)=>({
-      validation: {
-        ...prevState.validation,
-        [name]: ({
-          ...prevState.validation[name],
-          focused: true
-          })
-        }
-      })
-    )
-  }
+  onValidateButton = () =>{
+		this.setState((prevState) => ({
+			...prevState,
+			enableButton: prevState.registerData.email.validated && prevState.registerData.password.validated && prevState.registerData.confirmPassword.validated,
+		}));
+		
+	}
+	onFocusHandler = (e) =>{
+		const {name} = e.target
+		this.setState((prevState)=>({
+		validation: {
+			...prevState.validation,
+			[name]: ({
+			...prevState.validation[name],
+			focused: true
+			})
+			}
+		})
+		)
+	}
 
-  onBlurHandler = (e) =>{
-    const {name} = e.target
-    this.setState((prevState)=>({
-      validation: {
-        ...prevState.validation,
-        [name]: ({
-          ...prevState.validation[name],
-          focused: false
-          })
-        }
-      })
-    )
-  }
+	onBlurHandler = (e) =>{
+		const {name} = e.target
+		this.setState((prevState)=>({
+		validation: {
+			...prevState.validation,
+			[name]: ({
+			...prevState.validation[name],
+			focused: false
+			})
+			}
+		})
+		)
+	}
 
-  onSubmitHandler = (e) =>{
-    
+  	onSubmitHandler = (e) =>{
       let userData = {
           username:this.state.registerData.username.value,
           email:this.state.registerData.email.value,
@@ -143,14 +159,13 @@ class Auth extends Component {
   
 
     changeAuthState = (value)=>{
-      this.setState({auth:value}, () => this.props.removeError())
+      this.setState({auth:value}, () => this.props.removeError(), this.onValidateButton())
       
     }
 
   render() {
     const { error,history, removeError } = this.props;
-    const{auth, registerData, loginData } = this.state;
-    //if there is any change in route remove previous error
+    const{auth, registerData, loginData, enableButton } = this.state;
     history.listen(() =>{
        removeError()
     })
@@ -264,7 +279,7 @@ class Auth extends Component {
               </div>
           </React.Fragment>
           }
-          <input type="submit" className="form-submit-button" value="Submit"/>
+          <input type="submit" disabled={!enableButton} className="form-submit-button" value="Submit"/>
         </form>
         {(auth === "login") &&
           <div className="login-signup">

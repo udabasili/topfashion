@@ -2,7 +2,7 @@ import React from 'react';
 
 const StyledButton = ({children, ...otherProps}) => (
   <button
-    className='styled-button' {...otherProps}>
+    className='custom-button' {...otherProps}>
       {children}
   </button>
 );
