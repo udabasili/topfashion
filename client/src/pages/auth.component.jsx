@@ -230,8 +230,8 @@ class Auth extends Component {
                       value={registerData.password.value}
                       className="form__input" required/>
                       <label htmlFor="password" className="form__label">
-                      <span>Password</span>
-                      <span>(Must be at least 7 characters)</span>
+                      <span>Password </span>
+                      <span> (Must be at least 8 characters) </span>
                       </label>
                   </div>
                   </div>
