@@ -9,6 +9,9 @@ import Shop from './pages/shop-page.component';
 import CheckOut from './pages/checkout.component';
 import PrivateRoute from './components/protected-route.component';
 import { removeError } from './redux/actions/error.actions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import NotFoundPage from './components/not-found';
 
 if (localStorage.getItem("validator")) {  
   setTokenHeader(localStorage.getItem("validator"));
@@ -26,6 +29,17 @@ class App extends React.Component {
 
   return (
     <div className="App">
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover={false}
+        />
       <Navigation/>
       <Switch>
         <Route  exact path='/' component={Home}/>
@@ -43,6 +57,8 @@ class App extends React.Component {
           )}/>
         <Route path="/shop" component={Shop}/>  
         <PrivateRoute exact path="/checkout" component={CheckOut}/>  
+        <Route path='/404' component={NotFoundPage}/>
+        <Redirect to='/404'/>
       </Switch>
      
     </div>

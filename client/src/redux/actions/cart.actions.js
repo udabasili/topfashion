@@ -1,5 +1,5 @@
 import {
-    CART_BUTTON, GET_USER_CART_ITEMS
+    CART_BUTTON, GET_USER_CART_ITEMS, CLEAR_ALL_ITEMS_FROM_CART
   } from '../actionTypes';
 import { restApi } from '../../services/api';
 import { addError, removeError } from './error.actions';
@@ -8,6 +8,10 @@ import { addError, removeError } from './error.actions';
 export const getUserCartItems = (cartItems) => ({
   type: GET_USER_CART_ITEMS,
   payload: cartItems
+});
+
+export const clearAllCartItems = () => ({
+  type: CLEAR_ALL_ITEMS_FROM_CART,
 });
 
 export const cartButton = () => ({

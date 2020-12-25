@@ -1,5 +1,5 @@
 import {
-    CART_BUTTON, GET_USER_CART_ITEMS, 
+    CART_BUTTON, GET_USER_CART_ITEMS, CLEAR_ALL_ITEMS_FROM_CART
   } from '../actionTypes';
 
   
@@ -15,7 +15,11 @@ const INITIAL_STATE = {
           ...state,
           cart: action.payload
         };
-
+      case CLEAR_ALL_ITEMS_FROM_CART:
+        return {
+          ...state,
+          cart: []
+        };
       case CART_BUTTON:
         return {
           ...state,

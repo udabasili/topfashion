@@ -5,13 +5,15 @@
 @import "./base/topography";
 @import "./base/base";
 @import "./base/utils";
-
+@import './base/animation';
 
 @import "./component/slide";
 @import "./component/form";
 @import "./component/button";
 @import "./component/card";
 @import "./component/cart";
+@import './component/loader';
+@import './component/not-found.scss';
 
 @import "./layout/navigation";
 

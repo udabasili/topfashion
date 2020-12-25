@@ -39,6 +39,12 @@
   z-index: 5;
 
   @include responsive(phone){
+    right: 0;
+    top: 10vh;
+  }
+
+  @include responsive(tab-port){
+    right: 0;
     top: 10vh;
   }
 

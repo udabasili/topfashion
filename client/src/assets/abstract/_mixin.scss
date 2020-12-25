@@ -10,20 +10,17 @@
     @if $device == phone {
         @media only screen and (max-width: 600px) { @content };    
     }
+
     @if $device == tab-port {
         @media only screen and (min-width: 600px) and  (max-width: 900px) {
-            @content
+            @content;
         }
-
-        ;
     }
+
     @if $device == tab-land {
         @media only screen and (min-width: 900px) and (max-width: 1200px) {
-            @content
+            @content;
         }
-
-        ;
     }
    
-    
 }

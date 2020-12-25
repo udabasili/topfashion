@@ -48,6 +48,7 @@
       display: flex;
       font-family: 'Archivo Narrow', sans-serif;
       justify-content: space-around;
+      align-items: center;
       font-size: 1.4rem;
 
       @include responsive(phone){
@@ -73,27 +74,7 @@
         }
       }
 
-    &__button{
-      border: 2px solid black;
-      padding: 8px 20px;
-      border-radius: 20%;
-      cursor:pointer;
-      color: $color-primary;
-      background-color:black;
 
-      @include responsive(phone){
-        top: 95%;
-        font-size: 1.6rem;
-        font-weight: bolder;
-        left: 50%;
-        transform: translate(-50%, -95%);
-        position: absolute;
-      }
-
-    &:hover{
-      opacity: .5;
-    }
-  }
     .price {
       width: 10%;
     }

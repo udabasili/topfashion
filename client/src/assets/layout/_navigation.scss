@@ -12,18 +12,20 @@
 
     @include responsive(phone){
         display: flex;
-        background-color: $color-primary-dark;
+        background-color: $color-primary;
         align-items: center;
-        padding: 3rem;
+        padding: 0;
         height: 10vh;
+
 
     }
 
     @include responsive(tab-port) {
         display: flex;
-        background-color: $color-primary-dark;
+        background-color: $color-primary;
         align-items: center;
         padding: 1.5rem 2rem;
+        color: black;
         height: 10vh;
 
     }
@@ -38,14 +40,14 @@
         @include responsive(phone){
             flex: 90% 1 1;
             font-size: 1.7rem;
-            justify-content: space-between;
+            justify-content: space-around;
     
         }
 
         @include responsive(tab-port) {
             flex: 90% 1 1;
             font-size: 1.4rem;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: inherit;
 
         }
@@ -64,7 +66,11 @@
         &:link{
             color: black;
             @include responsive(phone){
-                            padding-top: 1rem;
+                padding-top: 1rem;
+
+            }
+
+            @include responsive(tab-port){
 
             }
         }
@@ -93,8 +99,16 @@
     font-size: 1.7rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+    @include responsive(phone) {
+        align-items: inherit;
+        justify-content: center;
+        font-size: 1.5rem;
+
+    }
+
     @include responsive(tab-port) {
         align-items: inherit;
+        justify-content: center;
         font-size: 1.5rem;
 
     }
@@ -110,3 +124,6 @@
     }
 }
 
+.active-nav{
+    border-bottom: 2px solid black;
+}

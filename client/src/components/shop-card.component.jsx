@@ -4,6 +4,7 @@ import { addItemToCart } from '../redux/actions/cart.actions';
 import { withRouter } from 'react-router-dom';
 import { addError } from '../redux/actions/error.actions';
 import PropTypes from "prop-types";
+import { toast } from 'react-toastify';
 
 /*
  * Individual card that shows item for sale
@@ -16,34 +17,37 @@ import PropTypes from "prop-types";
 function ShopCard({ item, addItem, history, addError }) {
   const {id, name, price, imageUrl } = item;
   const addItemToCart = (item) =>{
-    addItem(item).catch((err) => {
-      if(err.status === 401){
-        history.push("/auth")
-        addError("Please Login")
-      }
-    });
-  }
-  return (
-    <div id={id} className="card">
-      <div
-        className="card__image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-      />
-      <div className="card__footer">
-        <div className="card__footer__text">
-          <span className="name">{name}</span>
-          <span className="price">
-            $ {price}
-          </span>
-        </div>
-        <div onClick={()=>addItemToCart(item)} className="card__footer__button">
-            Buy
-        </div>
-      </div>
-    </div>
-  );
+	addItem(item)
+		.then(() =>{
+			toast.success('Added to Cart')
+		}).catch((err) => {
+		if(err.status === 401){
+			history.push("/auth")
+			addError("Please Login")
+		}
+		});
+  	}
+	return (
+		<div id={id} className="card">
+		<div
+			className="card__image"
+			style={{
+			backgroundImage: `url(${imageUrl})`,
+			}}
+		/>
+		<div className="card__footer">
+			<div className="card__footer__text">
+			<span className="name">{name}</span>
+			<span className="price">
+				$ {price}
+			</span>
+			</div>
+			<div onClick={() => addItemToCart(item)} className="custom-button">
+				Buy
+			</div>
+		</div>
+		</div>
+	);
 }
 
 const mapDispatchToProps = (dispatch) => ({

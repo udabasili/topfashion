@@ -14,10 +14,14 @@ export function setTokenHeader(token){
 
 export function logOut (){
     return dispatch =>{
-        localStorage.clear()
-        TokenHeader(false)
-        dispatch(setCurrentUser({}))
-        dispatch(getUserCartItems([]))
+        return new Promise((res, rej) =>{
+            localStorage.clear()
+            TokenHeader(false)
+            dispatch(setCurrentUser({}))
+            dispatch(getUserCartItems([]))
+            return res()
+        })
+        
     }
 
 }

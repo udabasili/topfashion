@@ -1,10 +1,16 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout"
+import { toast } from "react-toastify";
 import Image from '../assets/tie.svg'
-const StripeCheckoutButton =({price}) =>{
+const StripeCheckoutButton =({price, clearAllCartItems}) =>{
     const priceForStripe = price * 100;
-    const publishableKey = process.env.STRIPE_API;
+    const publishableKey = process.env.REACT_APP_STRIPE_API;
 
+    const onToken = (token) => {
+        toast.success('Order submitted')
+        clearAllCartItems()
+
+    }
     return(
         <StripeCheckout
             label="Pay Now"
@@ -15,7 +21,7 @@ const StripeCheckoutButton =({price}) =>{
             description={`Total: $${price}`}
             amount={priceForStripe}
             panelLabel="Pay Now"
-            token={f=>f}
+            token={onToken} 
             stripeKey={publishableKey}
         />
     )

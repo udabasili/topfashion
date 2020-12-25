@@ -13,10 +13,10 @@ import PropTypes from "prop-types";
 
 const CartIcon = ({ toggleDropdown, itemCount }) => {
   return (
-  <div className="cart-icon" onClick={()=>toggleDropdown()}>
-    <Bag className="shopping-icon" />
-    <span className="item-count">{itemCount}</span>
-  </div>
+	<div className="cart-icon" onClick={()=>toggleDropdown()}>
+		<Bag stroke='red' className="shopping-icon"/>
+		<span className="item-count">{itemCount}</span>
+	</div>
   )
 };
 

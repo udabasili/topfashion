@@ -13,7 +13,7 @@ const SlideCard = ({title, subtext, image}) => {
       <div className="slide">
         <div 
           className="slide__image"  style={{
-            backgroundImage: `url(${image}), url(${image})`}}>
+          backgroundImage: `url(${image}), url(${image})`}}>
         </div>
         <div className="slide__text-box">
           <h1 className="header-primary">
